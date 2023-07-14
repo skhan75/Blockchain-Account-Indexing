@@ -1,0 +1,24 @@
+[
+    {
+        "id": "GzbXUY1JQwRVUf3j3myg2NbDRwD5i4jD4HJpYhVNfiDm",
+        "accountType": "escrow",
+        "tokens": 500000,
+        "callbackTimeMs": 400,
+        "data": {
+            "subtype_field1": true,
+            "subtype_field2": 999
+        },
+        "version": 123
+    },
+    {
+        "id": "XDLK09jZQP7wPvSTbAW2S7qtpQ0xCYMQthSOmP1ZTM67",
+        "accountType": "regular",
+        "tokens": 10000,
+        "callbackTimeMs": 800,
+        "data": {
+            "subtype_field1": false,
+            "subtype_field2": 555
+        },
+        "version": 456
+    }
+]

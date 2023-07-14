@@ -1,0 +1,22 @@
+[
+    {
+        "id": "account1",
+        "accountType": "type1",
+        "tokens": 100,
+        "callbackTimeMs": 500,
+        "data": {
+            "field1": 42
+        },
+        "version": 1
+    },
+    {
+        "id": "account1",
+        "accountType": "type1",
+        "tokens": 200,
+        "callbackTimeMs": 300,
+        "data": {
+            "field1": 123
+        },
+        "version": 2
+    }
+]

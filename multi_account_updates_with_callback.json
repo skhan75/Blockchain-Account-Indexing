@@ -1,0 +1,42 @@
+[
+    {
+        "id": "account1",
+        "accountType": "type1",
+        "tokens": 100,
+        "callbackTimeMs": 500,
+        "data": {
+            "field1": 42
+        },
+        "version": 1
+    },
+    {
+        "id": "account2",
+        "accountType": "type2",
+        "tokens": 200,
+        "callbackTimeMs": 300,
+        "data": {
+            "field1": 123
+        },
+        "version": 1
+    },
+    {
+        "id": "account1",
+        "accountType": "type1",
+        "tokens": 150,
+        "callbackTimeMs": 400,
+        "data": {
+            "field1": 99
+        },
+        "version": 2
+    },
+    {
+        "id": "account3",
+        "accountType": "type1",
+        "tokens": 300,
+        "callbackTimeMs": 600,
+        "data": {
+            "field1": 456
+        },
+        "version": 1
+    }
+]
