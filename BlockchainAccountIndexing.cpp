@@ -240,9 +240,33 @@ class AccountManager {
             printHighestTokenValueAccounts();
         }
 
-    private:
-        unordered_map<AccountKey, Account, AccountKeyHash> indexedAccounts;
+        /**
+         * Search and filter accounts based on the specified criteria.
+         * @param accountType The account type to filter by (optional).
+         * @param minTokens The minimum token value to filter by (optional).
+         * @param maxTokens The maximum token value to filter by (optional).
+         * @return A vector of filtered accounts.
+         */
+        vector<Account> searchAndFilterAccounts(
+            const string &accountType = "", 
+            int minTokens = numeric_limits<int>::min(), 
+            int maxTokens=numeric_limits<int>::max()
+        ) {
+            vector<Account> filteredAccounts;
+            for(const auto& pair: accountIndexer.indexedAccounts) {
+                const Account& account = pair.second;
+                
+                // Apply filters
+                if(!accountType.empty() && account.accountType!=accountType) continue;
+                if(account.tokens < minTokens || account.tokens > maxTokens) continue;
+ 
+                // Account meets filter criteria
+                filteredAccounts.push_back(account);
+            }
+            return filteredAccounts;
+        }
 
+    private: 
         /**
          * Parse the account update from the given JSON object.
          * @param accountJson The JSON object representing an account update.
@@ -377,7 +401,6 @@ class AccountManager {
 
 int main() {
     // Test Case 1: Single Account Update
-    AccountManager accountManager("account_updates.json");
     {
         AccountManager accountManager("single_account_update.json");
         assert(accountManager.accountIndexer.indexedAccounts.size() == 1);
@@ -403,6 +426,19 @@ int main() {
         assert(accountManager.accountIndexer.indexedAccounts.size() == 2);
         assert(accountManager.accountIndexer.indexedAccounts.count({"account1", 3}) == 1);
         assert(accountManager.accountIndexer.indexedAccounts.count({"account2", 1}) == 1);
+    }
+    // Test Case 5: Accounts should get filtered based on the criteria
+    {
+        AccountManager accountManager("multi_accounts_to_be_filtered.json");
+        vector<Account> filteredAccounts = accountManager.searchAndFilterAccounts("user", 200, 400);
+        // Validate the filtered accounts
+        assert(filteredAccounts.size() == 2);
+        assert(filteredAccounts[0].id == "id4");
+        assert(filteredAccounts[0].accountType == "user");
+        assert(filteredAccounts[0].tokens == 400);
+        assert(filteredAccounts[1].id == "id3");
+        assert(filteredAccounts[1].accountType == "user");
+        assert(filteredAccounts[1].tokens == 300);
     }
     return 0;
 }

@@ -1,0 +1,46 @@
+[
+    {
+        "id": "id1",
+        "accountType": "user",
+        "tokens": 100,
+        "callbackTimeMs": 500,
+        "data": {
+            "key1": 10,
+            "key2": 20
+        },
+        "version": 1
+    },
+    {
+        "id": "id2",
+        "accountType": "admin",
+        "tokens": 200,
+        "callbackTimeMs": 600,
+        "data": {
+            "key1": 30,
+            "key2": 40
+        },
+        "version": 2
+    },
+    {
+        "id": "id3",
+        "accountType": "user",
+        "tokens": 300,
+        "callbackTimeMs": 700,
+        "data": {
+            "key1": 50,
+            "key2": 60
+        },
+        "version": 3
+    },
+    {
+        "id": "id4",
+        "accountType": "user",
+        "tokens": 400,
+        "callbackTimeMs": 800,
+        "data": {
+            "key1": 70,
+            "key2": 80
+        },
+        "version": 4
+    }
+]
